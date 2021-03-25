@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import food from './food';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    const choice=(itmes)=>{
+        const fruitId=Math.floor(Math.random()*itmes.length);
+        return itmes[fruitId];
+    };
+const remove=(items,item)=>{
+    for(let i=0;i<items.length;i++){
+        if(items[i]===item){
+            return[...items.slice(0,i),...items.slice(i+1)];
+        }
+    }
+}
+   
+    // const remove=((items,item)=>{
+    //     const newArray=[...items];
+    //     if(items===item){
+    //         items.slice(item,1);
+    //     }
+    //     return newArray;
+    // })
+
+            
+        
+
+    let fruit=choice(food);
+    let remaining=remove(food,fruit);
+    return (
+        <div>
+            <h1> I would like one {fruit}</h1>
+    <h2> i am sorry ,we have {remaining.length}</h2>
+            
+        </div>
+    )
 }
 
 export default App;
